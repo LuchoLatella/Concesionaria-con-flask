@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, send_file, request
 import matplotlib.pyplot as plt
 import io
@@ -37,7 +36,17 @@ def gestionar_vehiculos():
     vehiculos = cargar_vehiculos()
     if request.method == 'POST':
         # Lógica para agregar, editar o eliminar vehículos
-        pass
+        patente = request.form['patente']
+        marca = request.form['marca']
+        modelo = request.form['modelo']
+        tipo = request.form['tipo']
+        año = request.form['año']
+        kilometraje = request.form['kilometraje']
+        precio_compra = request.form['precio_compra']
+        precio_venta = request.form['precio_venta']
+        estado = request.form['estado']
+        agregar_vehiculo(vehiculos, patente, marca, modelo, tipo, año, kilometraje, precio_compra, precio_venta, estado)
+        guardar_vehiculos(vehiculos)
     return render_template('vehiculos.html', vehiculos=vehiculos)
 
 @app.route('/clientes', methods=['GET', 'POST'])
@@ -45,7 +54,14 @@ def gestionar_clientes():
     clientes = cargar_clientes()
     if request.method == 'POST':
         # Lógica para agregar, editar o eliminar clientes
-        pass
+        nombre = request.form['nombre']
+        apellido = request.form['apellido']
+        documento = request.form['documento']
+        direccion = request.form['direccion']
+        telefono = request.form['telefono']
+        email = request.form['email']
+        agregar_cliente(clientes, nombre, documento, apellido, direccion, telefono, email)
+        guardar_clientes(clientes)
     return render_template('clientes.html', clientes=clientes)
 
 @app.route('/transacciones', methods=['GET', 'POST'])
@@ -53,7 +69,13 @@ def registrar_transacciones():
     transacciones = cargar_transacciones()
     if request.method == 'POST':
         # Lógica para registrar transacciones
-        pass
+        id_vehiculo = request.form['id_vehiculo']
+        id_cliente = request.form['id_cliente']
+        fecha = request.form['fecha']
+        monto = request.form['monto']
+        observaciones = request.form['observaciones']
+        agregar_transaccion(transacciones, id_vehiculo, id_cliente, "Compra", fecha, monto, observaciones)
+        guardar_transacciones(transacciones)
     return render_template('transacciones.html', transacciones=transacciones)
 
 if __name__ == '__main__':
