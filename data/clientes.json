@@ -1,0 +1,11 @@
+[
+    {
+        "id": 2,
+        "nombre": "JOHN",
+        "apellido": "15",
+        "documento": "LENNON",
+        "direccion": "LIVERPOOL",
+        "telefono": "16",
+        "email": "JOHN@BEATLES.COM"
+    }
+]

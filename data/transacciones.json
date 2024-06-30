@@ -1,0 +1,83 @@
+[
+    {
+        "id": 1,
+        "id_vehiculo": 1,
+        "id_cliente": 1,
+        "tipo": "Compra",
+        "fecha": "16/6/2024",
+        "monto": "16800000",
+        "observaciones": "la ne me gusta"
+    },
+    {
+        "id": 2,
+        "id_vehiculo": 2,
+        "id_cliente": 1,
+        "tipo": "Compra",
+        "fecha": "16/6/2024",
+        "monto": "14500000",
+        "observaciones": "NO HAY"
+    },
+    {
+        "id": 3,
+        "id_vehiculo": 2,
+        "id_cliente": 1,
+        "tipo": "Compra",
+        "fecha": "14/6/2024",
+        "monto": "14500000",
+        "observaciones": "venta sujeta a cuotas"
+    },
+    {
+        "id": 4,
+        "id_vehiculo": 1,
+        "id_cliente": 2,
+        "tipo": "Compra",
+        "fecha": "14/6/2024",
+        "monto": "14500000",
+        "observaciones": ""
+    },
+    {
+        "id": 5,
+        "id_vehiculo": 1,
+        "id_cliente": 1,
+        "tipo": "Venta",
+        "fecha": "14/5/2024",
+        "monto": "13250000",
+        "observaciones": "no hay"
+    },
+    {
+        "id": 6,
+        "id_vehiculo": 3,
+        "id_cliente": 3,
+        "tipo": "Compra",
+        "fecha": "17/6/2024",
+        "monto": "14500200",
+        "observaciones": "no hay"
+    },
+    {
+        "id": 7,
+        "id_vehiculo": 1,
+        "id_cliente": 2,
+        "tipo": "Compra",
+        "fecha": "16/6/2024",
+        "monto": "14500000",
+        "observaciones": "venta acordada por mail"
+    },
+    {
+        "id": 8,
+        "id_vehiculo": 2,
+        "id_cliente": 2,
+        "tipo": "Venta",
+        "fecha": "21/6/2026",
+        "monto": "16800100",
+        "observaciones": "cambio de due\u00f1o veh\u00edculo 2"
+    },
+    {
+        "id": 9,
+        "id_vehiculo": 1,
+        "id_cliente": 1,
+        "tipo": "Compra",
+        "fecha": "25/06/2024",
+        "monto": "2100000",
+        "observaciones": "Estado finalizado, papeles ok"
+    }
+]

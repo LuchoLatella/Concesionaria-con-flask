@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1,
+        "patente": "JLL787",
+        "marca": "FIAT",
+        "modelo": "UNO",
+        "tipo": "SEDAN 4 PTAS",
+        "a\u00f1o": "2010",
+        "kilometraje": "91000",
+        "precio_compra": "210000",
+        "precio_venta": "210000",
+        "estado": "VENDIDO A PAUL McARTNEY 25/06/2024"
+    }
+]
