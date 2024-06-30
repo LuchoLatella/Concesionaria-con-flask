@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Transacciones</title>
+</head>
+<body>
+    <h1>Registrar Transacciones</h1>
+    <form method="POST">
+        <label for="id_vehiculo">ID del Vehículo:</label><input type="text" name="id_vehiculo"><br>
+        <label for="id_cliente">ID del Cliente:</label><input type="text" name="id_cliente"><br>
+        <label for="fecha">Fecha:</label><input type="text" name="fecha"><br>
+        <label for="monto">Monto:</label><input type="text" name="monto"><br>
+        <label for="observaciones">Observaciones:</label><input type="text" name="observaciones"><br>
+        <button type="submit">Registrar Transacción</button>
+    </form>
+    <ul>
+        {% for transaccion in transacciones %}
+        <li>{{ transaccion.fecha }} - {{ transaccion.monto }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>
