@@ -36,16 +36,24 @@ def gestionar_vehiculos():
     vehiculos = cargar_vehiculos()
     if request.method == 'POST':
         # Lógica para agregar, editar o eliminar vehículos
-        patente = request.form['patente']
-        marca = request.form['marca']
-        modelo = request.form['modelo']
-        tipo = request.form['tipo']
-        año = request.form['año']
-        kilometraje = request.form['kilometraje']
-        precio_compra = request.form['precio_compra']
-        precio_venta = request.form['precio_venta']
-        estado = request.form['estado']
-        agregar_vehiculo(vehiculos, patente, marca, modelo, tipo, año, kilometraje, precio_compra, precio_venta, estado)
+        if request.form.get('action') == 'Agregar':
+            patente = request.form['patente']
+            marca = request.form['marca']
+            modelo = request.form['modelo']
+            tipo = request.form['tipo']
+            año = request.form['año']
+            kilometraje = request.form['kilometraje']
+            precio_compra = request.form['precio_compra']
+            precio_venta = request.form['precio_venta']
+            estado = request.form['estado']
+            agregar_vehiculo(vehiculos, patente, marca, modelo, tipo, año, kilometraje, precio_compra, precio_venta, estado)
+        elif request.form.get('action') == 'Editar':
+            id_vehiculo = int(request.form['id'])
+            datos_actualizados = {key: value for key, value in request.form.items() if key != 'id' and value}
+            editar_vehiculo(vehiculos, id_vehiculo, **datos_actualizados)
+        elif request.form.get('action') == 'Eliminar':
+            id_vehiculo = int(request.form['id'])
+            eliminar_vehiculo(vehiculos, id_vehiculo)
         guardar_vehiculos(vehiculos)
     return render_template('vehiculos.html', vehiculos=vehiculos)
 
@@ -54,29 +62,41 @@ def gestionar_clientes():
     clientes = cargar_clientes()
     if request.method == 'POST':
         # Lógica para agregar, editar o eliminar clientes
-        nombre = request.form['nombre']
-        apellido = request.form['apellido']
-        documento = request.form['documento']
-        direccion = request.form['direccion']
-        telefono = request.form['telefono']
-        email = request.form['email']
-        agregar_cliente(clientes, nombre, documento, apellido, direccion, telefono, email)
+        if request.form.get('action') == 'Agregar':
+            nombre = request.form['nombre']
+            apellido = request.form['apellido']
+            documento = request.form['documento']
+            direccion = request.form['direccion']
+            telefono = request.form['telefono']
+            email = request.form['email']
+            agregar_cliente(clientes, nombre, documento, apellido, direccion, telefono, email)
+        elif request.form.get('action') == 'Editar':
+            id_cliente = int(request.form['id'])
+            datos_actualizados = {key: value for key, value in request.form.items() if key != 'id' and value}
+            editar_cliente(clientes, id_cliente, **datos_actualizados)
+        elif request.form.get('action') == 'Eliminar':
+            id_cliente = int(request.form['id'])
+            eliminar_cliente(clientes, id_cliente)
         guardar_clientes(clientes)
     return render_template('clientes.html', clientes=clientes)
 
 @app.route('/transacciones', methods=['GET', 'POST'])
 def registrar_transacciones():
     transacciones = cargar_transacciones()
+    vehiculos = cargar_vehiculos()
+    clientes = cargar_clientes()
     if request.method == 'POST':
         # Lógica para registrar transacciones
-        id_vehiculo = request.form['id_vehiculo']
-        id_cliente = request.form['id_cliente']
+        id_vehiculo = int(request.form['id_vehiculo'])
+        id_cliente = int(request.form['id_cliente'])
         fecha = request.form['fecha']
         monto = request.form['monto']
         observaciones = request.form['observaciones']
         agregar_transaccion(transacciones, id_vehiculo, id_cliente, "Compra", fecha, monto, observaciones)
+        editar_vehiculo(vehiculos, id_vehiculo, estado="Comprado")
         guardar_transacciones(transacciones)
-    return render_template('transacciones.html', transacciones=transacciones)
+        guardar_vehiculos(vehiculos)
+    return render_template('transacciones.html', transacciones=transacciones, vehiculos=vehiculos, clientes=clientes)
 
 if __name__ == '__main__':
     app.run(debug=True)
