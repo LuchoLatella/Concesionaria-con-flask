@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Vehículos</title>
+</head>
+<body>
+    <h1>Gestionar Vehículos</h1>
+    <form method="POST">
+        <label for="patente">Patente:</label><input type="text" name="patente"><br>
+        <label for="marca">Marca:</label><input type="text" name="marca"><br>
+        <label for="modelo">Modelo:</label><input type="text" name="modelo"><br>
+        <label for="tipo">Tipo:</label><input type="text" name="tipo"><br>
+        <label for="año">Año:</label><input type="text" name="año"><br>
+        <label for="kilometraje">Kilometraje:</label><input type="text" name="kilometraje"><br>
+        <label for="precio_compra">Precio de Compra:</label><input type="text" name="precio_compra"><br>
+        <label for="precio_venta">Precio de Venta:</label><input type="text" name="precio_venta"><br>
+        <label for="estado">Estado:</label><input type="text" name="estado"><br>
+        <button type="submit">Agregar Vehículo</button>
+    </form>
+    <ul>
+        {% for vehiculo in vehiculos %}
+        <li>{{ vehiculo.marca }} - {{ vehiculo.modelo }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Volver al inicio</a>
+</body>
+</html>
