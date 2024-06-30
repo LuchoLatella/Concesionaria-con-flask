@@ -1,39 +1,34 @@
 
 import json
-import os
 
 def cargar_clientes():
-    if os.path.exists('data/clientes.json'):
-        with open('data/clientes.json', 'r') as archivo:
-            try:
-                return json.load(archivo)
-            except json.JSONDecodeError:
-                return []
-    else:
+    try:
+        with open('clientes.json', 'r') as file:
+            return json.load(file)
+    except FileNotFoundError:
         return []
 
 def guardar_clientes(clientes):
-    with open('data/clientes.json', 'w') as archivo:
-        json.dump(clientes, archivo, indent=4)
+    with open('clientes.json', 'w') as file:
+        json.dump(clientes, file)
 
-def agregar_cliente(clientes, nombre, apellido, documento, direccion, telefono, email):
-    id_cliente = len(clientes) + 1
-    cliente = {
-        "id": id_cliente,
-        "nombre": nombre,
-        "apellido": apellido,
-        "documento": documento,
-        "direccion": direccion,
-        "telefono": telefono,
-        "email": email
+def agregar_cliente(clientes, nombre, documento, apellido, direccion, telefono, email):
+    nuevo_cliente = {
+        'id': len(clientes) + 1,
+        'nombre': nombre,
+        'documento': documento,
+        'apellido': apellido,
+        'direccion': direccion,
+        'telefono': telefono,
+        'email': email
     }
-    clientes.append(cliente)
+    clientes.append(nuevo_cliente)
     guardar_clientes(clientes)
 
-def editar_cliente(clientes, id_cliente, **kwargs):
+def editar_cliente(clientes, id_cliente, **datos_actualizados):
     for cliente in clientes:
         if cliente['id'] == id_cliente:
-            cliente.update(kwargs)
+            cliente.update(datos_actualizados)
             guardar_clientes(clientes)
             return
 
